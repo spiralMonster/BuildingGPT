@@ -1,6 +1,5 @@
 import torch
 from torch import nn
-from exception_invalid_head_number import Invalid_Head_Number
 
 class Multi_Head_Masked_Attention(nn.Module):
     def __init__(self,
@@ -12,9 +11,6 @@ class Multi_Head_Masked_Attention(nn.Module):
                  dropout=False):
         
         super().__init__()
-        if dim_out%n_heads!=0:
-            error="Invalid Number of Heads. dim_out should be divided by number of n_heads."
-            raise Invalid_Head_Number(error)
 
         self.dim_in=dim_in
         self.dim_out=dim_out
